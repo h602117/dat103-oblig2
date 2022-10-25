@@ -35,18 +35,18 @@ push_loop:
   ; edx, count bytes read
   ; Finally push the count onto the stack
   movzx ebx, byte [input_buffer + eax]
-  push ebx
+  push dword ebx
   inc eax
   cmp eax, edx
   jl push_loop
-  push eax
+  push dword eax
 
   pop eax                         ; Get count from stack
   mov edx, eax
 pop_loop:
-  pop ecx                         ; Get char
+  pop dword ecx                         ; Get char
   dec eax
-  mov [input_buffer + edx], ecx   ; Move char into buffer
+  mov [input_buffer + eax], ecx   ; Move char into buffer
   cmp eax, 0
   jg pop_loop
 
