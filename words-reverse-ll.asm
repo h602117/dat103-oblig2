@@ -1,6 +1,4 @@
 %include "macros.asm"
-%include "readLine.asm"
-%include "reverseInputLines.asm"
 
 section .data
   STDIN equ 0
@@ -18,6 +16,7 @@ section .bss
 section .text
 global _start
 _start:
+  ; calling reversal function
   call reverseInputLines
 
   ; sys_exit system call
@@ -25,3 +24,6 @@ _start:
   mov eax, 0x01           ; Exit syscall
   int 0x80                ; Call interrupt
 
+%include "readLine.asm"
+
+%include "reverseInputLines.asm"
